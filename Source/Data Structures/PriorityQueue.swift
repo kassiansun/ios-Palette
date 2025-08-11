@@ -1,5 +1,5 @@
 //
-//  PriorityQueue.swift
+//  pPriorityQueue.swift
 //  Palette
 //
 //  Created by Egor Snitsar on 07.08.2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal struct PriorityQueue<T> {
+internal struct pPriorityQueue<T> {
 
     private var heap: Heap<T>
 
@@ -54,7 +54,7 @@ internal struct PriorityQueue<T> {
     }
 }
 
-extension PriorityQueue where T: Equatable {
+extension pPriorityQueue where T: Equatable {
 
     internal func index(of element: T) -> Int? {
         return heap.index(of: element)

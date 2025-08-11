@@ -41,14 +41,14 @@ internal final class ColorCutQuantizer {
     }
 
     private func quantizePixels(maxColorsCount: Int, colors: inout [Color], histogram: CountedSet<Color>) -> [Palette.Swatch] {
-        var queue = PriorityQueue<VBox>() { $0.volume > $1.volume }
+        var queue = pPriorityQueue<VBox>() { $0.volume > $1.volume }
         queue.enqueue(VBox(lowerIndex: colors.startIndex, upperIndex: colors.index(before: colors.endIndex), colors: colors, histogram: histogram))
         splitBoxes(queue: &queue, maxSize: maxColorsCount, colors: &colors, histogram: histogram)
 
         return generateAverageColors(from: queue.elements, colors: colors, histogram: histogram)
     }
 
-    private func splitBoxes(queue: inout PriorityQueue<VBox>, maxSize: Int, colors: inout [Color], histogram: CountedSet<Color>) {
+    private func splitBoxes(queue: inout pPriorityQueue<VBox>, maxSize: Int, colors: inout [Color], histogram: CountedSet<Color>) {
         while queue.count < maxSize {
             if let vbox = queue.dequeue(), vbox.canSplit {
                 if let newBox = vbox.splitBox(colors: &colors, histogram: histogram)  {
