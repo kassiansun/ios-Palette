@@ -46,7 +46,7 @@ final class ColorCutQuantizer {
         colors: inout [ColorDescriptor],
         histogram: CountedSet<ColorDescriptor>
     ) -> [Palette.Swatch] {
-        var queue = PriorityQueue<VBox>() { $0.volume > $1.volume }
+        var queue = pPriorityQueue<VBox>() { $0.volume > $1.volume }
         let vbox = VBox(
             range: ClosedRange(colors.indices),
             colors: colors,
@@ -59,7 +59,7 @@ final class ColorCutQuantizer {
     }
 
     private func splitBoxes(
-        queue: inout PriorityQueue<VBox>,
+        queue: inout pPriorityQueue<VBox>,
         maxSize: Int,
         colors: inout [ColorDescriptor],
         histogram: CountedSet<ColorDescriptor>

@@ -1,6 +1,6 @@
 import Foundation
 
-struct PriorityQueue<T> {
+struct pPriorityQueue<T> {
 
     private var heap: Heap<T>
 
@@ -42,7 +42,7 @@ struct PriorityQueue<T> {
     }
 }
 
-extension PriorityQueue where T: Equatable {
+extension pPriorityQueue where T: Equatable {
 
     func index(of element: T) -> Int? {
         heap.index(of: element)
